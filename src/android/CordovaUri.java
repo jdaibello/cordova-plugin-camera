@@ -95,10 +95,12 @@ public class CordovaUri {
 
     private String getFileNameFromUri(Uri uri) {
         String fullUri = uri.toString();
-        String partial_path = fullUri.split("external_files")[1];
+        LOG.w("fullUri", fullUri);
+        String partial_path = fullUri.split("\\/\\/")[1];
+        LOG.w("partial_path", partial_path);
         File external_storage = Environment.getExternalStorageDirectory();
-        String path = external_storage.getAbsolutePath() + partial_path;
+        String path = external_storage.getAbsolutePath() + "/" + partial_path;
+        LOG.w("path", path);
         return path;
-
     }
 }
