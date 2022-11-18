@@ -22,6 +22,7 @@ package org.apache.cordova.camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.util.Log;
 import android.support.v4.content.FileProvider;
 
 import java.io.File;
@@ -95,12 +96,12 @@ public class CordovaUri {
 
     private String getFileNameFromUri(Uri uri) {
         String fullUri = uri.toString();
-        LOG.w("fullUri", fullUri);
+        Log.w("fullUri", fullUri);
         String partial_path = fullUri.split("\\/\\/")[1];
-        LOG.w("partial_path", partial_path);
+        Log.w("partial_path", partial_path);
         File external_storage = Environment.getExternalStorageDirectory();
         String path = external_storage.getAbsolutePath() + "/" + partial_path;
-        LOG.w("path", path);
+        Log.w("path", path);
         return path;
     }
 }
